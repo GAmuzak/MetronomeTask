@@ -29,6 +29,7 @@ public class HighlighterHandler : MonoBehaviour
     {
         if (CurrentListItem.Instance.stock == null) return;
         CurrentListItem.Instance.stock.parent.gameObject.GetComponent<Image>().enabled = false;
+        transform.position = CurrentListItem.Instance.stock.position;
     }
     
     private void HighlighterPositionUpdate()
