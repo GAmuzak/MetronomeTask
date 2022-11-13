@@ -19,7 +19,7 @@ public class ListItemHandler : MonoBehaviour
         CurrentListItem.Instance.cost=int.Parse(cost.Substring(0,cost.Length-3));
         CurrentListItem.Instance.multiplier=int.Parse(stock.GetChild(2).GetComponent<TextMeshProUGUI>().text.Substring(0, 1));
         CurrentListItem.Instance.holdings=int.Parse(stock.GetChild(3).GetComponent<TextMeshProUGUI>().text);
-        CurrentListItem.Instance.stock = stock;
+        CurrentListItem.Instance.stockTransform = stock;
         
         OnStockClick?.Invoke();
     }

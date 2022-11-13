@@ -11,7 +11,7 @@ public class CurrentListItem : MonoBehaviour
     public int cost;
     public int multiplier;
     public int holdings;
-    public Transform stock;
+    public Transform stockTransform;
     
     public static CurrentListItem Instance
     {
@@ -40,7 +40,7 @@ public class CurrentListItem : MonoBehaviour
     {
         string targetString = holdings.ToString();
         if (holdings < 10) targetString= "0" + targetString;
-        stock.GetChild(3).GetComponent<TextMeshProUGUI>().text = targetString;
+        stockTransform.GetChild(3).GetComponent<TextMeshProUGUI>().text = targetString;
     }
 }
 

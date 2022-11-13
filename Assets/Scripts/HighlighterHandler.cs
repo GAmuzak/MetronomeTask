@@ -27,16 +27,16 @@ public class HighlighterHandler : MonoBehaviour
 
     private void PrevStockHighlightDisable()
     {
-        if (CurrentListItem.Instance.stock == null) return;
-        CurrentListItem.Instance.stock.parent.gameObject.GetComponent<Image>().enabled = false;
-        transform.position = CurrentListItem.Instance.stock.position;
+        if (CurrentListItem.Instance.stockTransform == null) return;
+        CurrentListItem.Instance.stockTransform.parent.gameObject.GetComponent<Image>().enabled = false;
+        transform.position = CurrentListItem.Instance.stockTransform.position;
     }
     
     private void HighlighterPositionUpdate()
     {
         
         GetComponent<Image>().enabled = true;
-        Vector3 targetPosition = CurrentListItem.Instance.stock.position + visualOffset;
+        Vector3 targetPosition = CurrentListItem.Instance.stockTransform.position + visualOffset;
         LeanTween.move(gameObject, targetPosition, animTime).setEase(easeCurve);
         StartCoroutine(WaitForAnim(animTime));
     }
@@ -45,6 +45,6 @@ public class HighlighterHandler : MonoBehaviour
     {
         yield return new WaitForSeconds(animTime);
         GetComponent<Image>().enabled = false;
-        CurrentListItem.Instance.stock.parent.gameObject.GetComponent<Image>().enabled = true;
+        CurrentListItem.Instance.stockTransform.parent.gameObject.GetComponent<Image>().enabled = true;
     }
 }

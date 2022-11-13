@@ -3653,7 +3653,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.011764706}
+  m_Color: {r: 0.14901961, g: 0.13725491, b: 0.24705884, a: 0.007843138}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -6949,6 +6949,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1340606647}
   - component: {fileID: 1340606648}
+  - component: {fileID: 1340606649}
   m_Layer: 5
   m_Name: VertSplit
   m_TagString: Untagged
@@ -7004,6 +7005,34 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &1340606649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1340606646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72c5dc6f43c5ded47ac57f4aa29aa2ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  infoTypes:
+  - title: Penny
+    content: Penny Stocks are high - risk stocks from companies that haven't yet
+      developed into a fully stable business yet that sells for a very low price
+      outside of the main stock exchange.
+  - title: Small Cap
+    content: Small Capital stocks are companies which have been recently set up and
+      are new to the market, but they hold high potential
+  - title: Mid Cap
+    content: Medium Capital stocks are shares of well established companies with
+      a sizeable stock price. These are generally favourable to appreciate over time,
+      but may sink.
+  - title: Large Cap
+    content: Large Capital stocks are stocks from blue chip companies, or companies
+      which are guarenteed success over a long period of time. Investments in these
+      are expensive, and take long to mature, but are well worth.
 --- !u!1001 &1429550370
 PrefabInstance:
   m_ObjectHideFlags: 0
