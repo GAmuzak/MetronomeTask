@@ -7,8 +7,12 @@ using UnityEngine;
 public class ListItemHandler : MonoBehaviour
 {
     public static event Action OnStockClick;
+    public static event Action PreviousStockUpdate;
+    
     public void OnListItemClick()
     {
+        PreviousStockUpdate?.Invoke();
+        
         Transform stock = transform.GetChild(0);
         CurrentListItem.Instance.stockType = stock.GetChild(0).GetComponent<TextMeshProUGUI>().text;
         string cost = stock.GetChild(1).GetComponent<TextMeshProUGUI>().text;
