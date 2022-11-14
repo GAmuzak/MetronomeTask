@@ -8002,6 +8002,7 @@ MonoBehaviour:
   multiplier: 0
   holdings: 0
   stockTransform: {fileID: 0}
+  magnetHandler: {fileID: 1679095705}
 --- !u!1 &1247620445
 GameObject:
   m_ObjectHideFlags: 0
@@ -9557,8 +9558,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e1eeee7a838d894d82cab0fbc39e9d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  magnet: {fileID: 8535028291377481954, guid: 00475ce83b18a6d438a3fc4b541c24b0, type: 3}
   stocksHolder: {fileID: 702038260}
+  swapCd: 0.1
+  animCurve: 12
 --- !u!1001 &1682692440
 PrefabInstance:
   m_ObjectHideFlags: 0

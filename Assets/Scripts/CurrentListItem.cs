@@ -5,14 +5,16 @@ using UnityEngine;
 
 public class CurrentListItem : MonoBehaviour
 {
-    private static CurrentListItem _instance;
-    
     public string stockType;
     public int cost;
     public int multiplier;
     public int holdings;
     public Transform stockTransform;
-    
+
+    [SerializeField] private MagnetHandler magnetHandler;
+
+    private static CurrentListItem _instance;
+
     public static CurrentListItem Instance
     {
         get
@@ -36,11 +38,13 @@ public class CurrentListItem : MonoBehaviour
         _instance = this;
     }
     
-    public void UpdateVisual()
+    public void UpdateVisual(int type)
     {
         string targetString = holdings.ToString();
         if (holdings < 10) targetString= "0" + targetString;
         stockTransform.GetChild(3).GetComponent<TextMeshProUGUI>().text = targetString;
+        bool goingUp = type > 0;
+        magnetHandler.Sort(goingUp, holdings);
     }
 }
 

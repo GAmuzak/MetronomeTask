@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class AddOrRemove : MonoBehaviour
 {
-    
     /// <summary>
     /// Set this to +1 for Add and -1 for Remove
     /// </summary>
@@ -14,6 +13,6 @@ public class AddOrRemove : MonoBehaviour
     {
         if (type==-1 && CurrentListItem.Instance.holdings <= 0) return;
         CurrentListItem.Instance.holdings += type;
-        CurrentListItem.Instance.UpdateVisual();
+        CurrentListItem.Instance.UpdateVisual(type);
     }
 }
