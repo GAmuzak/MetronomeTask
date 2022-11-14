@@ -6,6 +6,6 @@ public class MagnetToListItem : MonoBehaviour
 {
     public void OnMagnetClick()
     {
-        Debug.Log("hello");
+        transform.parent.gameObject.GetComponent<MagnetHandler>().CallListItem(transform.GetSiblingIndex());
     }
 }

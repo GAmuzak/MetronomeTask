@@ -30,4 +30,9 @@ public class MagnetHandler : MonoBehaviour
             stocksHolder.GetChild(i).transform.position = new Vector3(transform.GetChild(i).transform.position.x,transform.GetChild(i).transform.position.y,0f);
         }
     }
+
+    public void CallListItem(int i)
+    {
+        stocksHolder.GetChild(i).gameObject.GetComponent<ListItemHandler>().OnListItemClick();
+    }
 }
