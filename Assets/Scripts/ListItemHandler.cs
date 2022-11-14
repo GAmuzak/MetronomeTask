@@ -23,12 +23,4 @@ public class ListItemHandler : MonoBehaviour
         
         OnStockClick?.Invoke();
     }
-
-    private void UpdateVisual()
-    {
-        int holdings = CurrentListItem.Instance.holdings;
-        string targetString = holdings.ToString();
-        if (holdings < 10) targetString= "0" + targetString;
-        transform.GetChild(0).GetChild(3).GetComponent<TextMeshProUGUI>().text = targetString;
-    }
 }
