@@ -1,6 +1,4 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -10,8 +8,7 @@ public class MagnetHandler : MonoBehaviour
     [SerializeField] private float swapCd;
     [SerializeField] private LeanTweenType animCurve;
 
-    private bool rearranging = true;
-    private bool sortingNotComplete;
+    private bool rearranging;
     private bool goingUp;
     private int currentHoldingsVal;
     private int index;
@@ -19,7 +16,7 @@ public class MagnetHandler : MonoBehaviour
 
     private void Update()
     {
-        if (!rearranging) return;
+        if (rearranging) return;
         for (int i = 0; i < transform.childCount; i++)
         {
             stocksHolder.GetChild(i).transform.position = new Vector3(transform.GetChild(i).transform.position.x,transform.GetChild(i).transform.position.y,0f);
@@ -29,6 +26,7 @@ public class MagnetHandler : MonoBehaviour
     public void CallListItem(int i)
     {
         index = i;
+        Debug.Log(index);
         stocksHolder.GetChild(i).gameObject.GetComponent<ListItemHandler>().OnListItemClick();
     }
 
@@ -36,7 +34,7 @@ public class MagnetHandler : MonoBehaviour
     {
         goingUp = add;
         currentHoldingsVal = holdings;
-        rearranging = false;
+        rearranging = true;
         if (CheckIfSorted()) return;
         Swap();
     }
@@ -44,26 +42,42 @@ public class MagnetHandler : MonoBehaviour
     private void Swap()
     {
         LeanTween.move(stocksHolder.GetChild(prevIndex).gameObject, transform.GetChild(index).position, swapCd).setEase(animCurve);
+        LeanTween.move(stocksHolder.GetChild(index).gameObject, transform.GetChild(prevIndex).position, swapCd).setEase(animCurve);
         stocksHolder.GetChild(prevIndex).SetSiblingIndex(index);
         StartCoroutine(SwapCooldown(swapCd));
     }
 
     private IEnumerator SwapCooldown(float time)
     {
-        yield return new WaitForSeconds(time);
-        rearranging = true;
-        if (CheckIfSorted()) sortingNotComplete = false;
+        if (CheckIfSorted())
+        {
+            rearranging = false;
+            index = prevIndex;
+        }
+        
         else
         {
+            yield return new WaitForSeconds(time);
             Swap();
         }
     }
 
     private bool CheckIfSorted()
     {
+        Debug.Log(index);
         prevIndex = index;
         index = goingUp ? index - 1 : index + 1;
-        if (index < 0 || index >= stocksHolder.childCount) return true;
+        if (index < 0 )
+        {
+            index = 0;
+            return true;
+        }
+        if (index >= stocksHolder.childCount)
+        {
+            index = stocksHolder.childCount - 1;
+            return true;
+        }
+        
         int nextHoldings = int.Parse(stocksHolder.GetChild(index).GetChild(0).GetChild(3).GetComponent<TextMeshProUGUI>().text);
         if (nextHoldings > currentHoldingsVal)
         {
